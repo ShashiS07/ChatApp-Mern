@@ -122,7 +122,7 @@ const Register = () => {
     event.preventDefault();
     if (handleUserInputValidation()) {
       const { username, email, password } = userInputs;
-      const {data} = await axios.post(registerRoute, {
+      const { data } = await axios.post(registerRoute, {
         username,
         email,
         password,
@@ -131,17 +131,13 @@ const Register = () => {
         toast.error(data.message, toastOptions);
       }
       if (data.status === true) {
-        localStorage.setItem(
-          "CURRENT_USER",
-          JSON.stringify(data.user)
-        );
+        localStorage.setItem("CURRENT_USER", JSON.stringify(data.user));
         toast.success("Successfully created!");
-        setTimeout(()=>{
-          navigate('/login')
-        },3000)
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
       }
     }
-    
   };
 
   return (

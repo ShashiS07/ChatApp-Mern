@@ -22,9 +22,7 @@ const Welcome = () => {
   useEffect(() => {
     const setUser = async () => {
       setUserName(
-        await JSON.parse(
-          localStorage.getItem("CURRENT_USER")
-        ).username
+        await JSON.parse(localStorage.getItem("CURRENT_USER")).username
       );
     };
     setUser();
@@ -39,7 +37,6 @@ const Welcome = () => {
       <h3>Please select a chat to Start messaging.</h3>
     </Container>
   );
-}
-
+};
 
 export default Welcome;

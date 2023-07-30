@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
 import Contact from "../components/Contact";
-import { allUserRoute,host } from "../utils/api";
+import { allUserRoute, host } from "../utils/api";
 import ChatContainer from "../components/ChatContainer";
 import Welcome from "../components/Welcome";
 
@@ -52,17 +52,17 @@ const Chat = () => {
   }, [currentUser]);
 
   useEffect(() => {
-    const currentUserName=async()=>{
-        if (currentUser) {
-            if (currentUser.isAvatarImageSet) {
-              const data = await axios.get(`${allUserRoute}/${currentUser._id}`);
-              setContacts(data.data);
-            } else {
-              navigate("/setAvatar");
-            }
-          }
-    }
-    currentUserName()
+    const currentUserName = async () => {
+      if (currentUser) {
+        if (currentUser.isAvatarImageSet) {
+          const data = await axios.get(`${allUserRoute}/${currentUser._id}`);
+          setContacts(data.data);
+        } else {
+          navigate("/setAvatar");
+        }
+      }
+    };
+    currentUserName();
   }, [currentUser]);
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
@@ -73,10 +73,10 @@ const Chat = () => {
         <div className="container">
           <Contact contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
-              <Welcome />
-            ) : (
-              <ChatContainer currentChat={currentChat} socket={socket} />
-            )}
+            <Welcome />
+          ) : (
+            <ChatContainer currentChat={currentChat} socket={socket} />
+          )}
         </div>
       </Container>
     </>

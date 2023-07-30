@@ -56,7 +56,7 @@ const Container = styled.div`
     }
   }
   span {
-    margin:auto;
+    margin: auto;
     color: white;
     text-transform: uppercase;
     a {
@@ -95,16 +95,14 @@ const Login = () => {
   };
 
   const handleUserInputValidation = () => {
-    const {email, password} = userInputs;
+    const { email, password } = userInputs;
     if (email === "") {
       toast.error("Email is required");
       return false;
-    } else if (password ==="") {
-      toast.error(
-        "Password is required"
-      );
+    } else if (password === "") {
+      toast.error("Password is required");
       return false;
-    } 
+    }
     return true;
   };
 
@@ -120,17 +118,13 @@ const Login = () => {
         toast.error(data.message, toastOptions);
       }
       if (data.status === true) {
-        localStorage.setItem(
-          "CURRENT_USER",
-          JSON.stringify(data.user)
-        );
+        localStorage.setItem("CURRENT_USER", JSON.stringify(data.user));
         toast.success("LoggedIn Successfully!");
-        setTimeout(()=>{
-          navigate('/')
-        },3000)
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       }
     }
-    
   };
 
   return (

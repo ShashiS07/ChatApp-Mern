@@ -96,4 +96,4 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { register, login, setAvatar, getAllUsers,logout };
+module.exports = { register, login, setAvatar, getAllUsers, logout };

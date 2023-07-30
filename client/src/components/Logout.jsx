@@ -20,24 +20,21 @@ const Button = styled.button`
   }
 `;
 
-
 const Logout = () => {
-    const navigate = useNavigate();
-    const handleClick = async () => {
-      const id = await JSON.parse(
-        localStorage.getItem("CURRENT_USER")
-      )._id;
-      const data = await axios.get(`${logoutRoute}/${id}`);
-      if (data.status === 200) {
-        localStorage.clear();
-        navigate("/login");
-      }
-    };
-    return (
-      <Button onClick={handleClick}>
-        <BiPowerOff />
-      </Button>
-    );
-  }
+  const navigate = useNavigate();
+  const handleClick = async () => {
+    const id = await JSON.parse(localStorage.getItem("CURRENT_USER"))._id;
+    const data = await axios.get(`${logoutRoute}/${id}`);
+    if (data.status === 200) {
+      localStorage.clear();
+      navigate("/login");
+    }
+  };
+  return (
+    <Button onClick={handleClick}>
+      <BiPowerOff />
+    </Button>
+  );
+};
 
-export default Logout
+export default Logout;

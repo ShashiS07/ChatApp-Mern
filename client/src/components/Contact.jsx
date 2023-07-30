@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -42,7 +42,7 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          margin:auto;
+          margin: auto;
           color: white;
         }
       }
@@ -86,9 +86,7 @@ const Contact = ({ contacts, changeChat }) => {
 
   useEffect(() => {
     const getContacts = async () => {
-      const data = await JSON.parse(
-        localStorage.getItem("CURRENT_USER")
-      );
+      const data = await JSON.parse(localStorage.getItem("CURRENT_USER"));
       setCurrentUserName(data.username);
       setCurrentUserImage(data.avatarImage);
     };

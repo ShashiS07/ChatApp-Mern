@@ -8,15 +8,16 @@ const getMessage = async (req, res) => {
         users: {
           $all: [from, to],
         },
-      }).sort({ updatedAt: 1 });
+      })
+      .sort({ updatedAt: 1 });
 
-      const projectedMessages = message.map((msg) => {
-        return {
-          fromSelf: msg.sender.toString() === from,
-          message: msg.message.text,
-        };
-      });
-      res.json(projectedMessages);
+    const projectedMessages = message.map((msg) => {
+      return {
+        fromSelf: msg.sender.toString() === from,
+        message: msg.message.text,
+      };
+    });
+    res.json(projectedMessages);
   } catch (error) {
     return res.json({ status: false, message: error.message });
   }
