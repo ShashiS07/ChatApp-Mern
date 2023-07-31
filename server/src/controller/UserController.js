@@ -48,7 +48,7 @@ const login = async (req, res) => {
       });
 
     delete user.password;
-    const token=jwt.sign(user,"chat-user")
+    const token=jwt.sign({user},"chat-user")
     return res.json({ status: true, message: "success", user,token });
   } catch (err) {
     res.json({ status: false, message: err.message });

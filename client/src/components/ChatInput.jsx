@@ -4,7 +4,6 @@ import { IoMdSend } from "react-icons/io";
 import styled from "styled-components";
 import Picker from "emoji-picker-react";
 
-
 const Container = styled.div`
   display: grid;
   align-items: center;
@@ -100,14 +99,14 @@ const Container = styled.div`
   }
 `;
 
-const ChatInput = ({ handleSendMsg }) => {
+export default function ChatInput({ handleSendMsg }) {
   const [msg, setMsg] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const handleEmojiPickerhideShow = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
-  const handleEmojiClick = (event, emojiObject) => {
+  const handleEmojiClick = (emojiObject) => {
     let message = msg;
     message += emojiObject.emoji;
     setMsg(message);
@@ -142,6 +141,5 @@ const ChatInput = ({ handleSendMsg }) => {
       </form>
     </Container>
   );
-};
+}
 
-export default ChatInput;
