@@ -1,5 +1,6 @@
 const userModel = require("../model/UserModel");
 const bcrypt = require("bcrypt");
+const jwt=require('jsonwebtoken')
 
 const register = async (req, res) => {
   try {
@@ -47,7 +48,8 @@ const login = async (req, res) => {
       });
 
     delete user.password;
-    return res.json({ status: true, message: "success", user });
+    const token=jwt.sign(user,"chat-user")
+    return res.json({ status: true, message: "success", user,token });
   } catch (err) {
     res.json({ status: false, message: err.message });
   }
