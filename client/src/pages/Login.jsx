@@ -119,6 +119,7 @@ const Login = () => {
       }
       if (data.status === true) {
         localStorage.setItem("CURRENT_USER", JSON.stringify(data.user));
+        localStorage.setItem("TOKEN", JSON.stringify(data.token));
         toast.success("LoggedIn Successfully!");
         setTimeout(() => {
           navigate("/");
